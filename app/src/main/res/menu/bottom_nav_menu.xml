@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/home"
+        android:id="@+id/bottom_home"
         android:icon="@drawable/home"
         android:title="Home"></item>
 
@@ -11,15 +11,19 @@
         android:icon="@drawable/about"
         android:title="About"></item>
 
+    <item  android:id="@+id/khali"
+        android:title="  ">
+
+    </item>
     <item
-        android:id="@+id/bottom_profile"
-        android:icon="@drawable/profile"
-        android:title="Profile"></item>
+        android:id="@+id/bottom_history"
+        android:icon="@drawable/history"
+        android:title="History"></item>
 
     <item
         android:id="@+id/bottom_settings"
-        android:icon="@drawable/settings"
-        android:title="Settings"></item>
+        android:icon="@drawable/docimage"
+        android:title="Profile"></item>
 
 
 </menu>

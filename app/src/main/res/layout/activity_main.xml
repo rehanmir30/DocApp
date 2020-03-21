@@ -13,53 +13,107 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="100dp"
-        android:src="@drawable/logo"></ImageView>
+        android:src="@drawable/logo"
+        android:transitionName="logoTransition"></ImageView>
 
-    <EditText
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/fieldbg"
-        android:drawableLeft="@drawable/usericon"
-        android:drawablePadding="90dp"
-        android:hint="Username"
-        android:textColor="#ffffff"
-        android:textColorHint="#F6F6F6"></EditText>
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/fieldbg"
-        android:drawableLeft="@drawable/passwordicon"
-        android:drawablePadding="90dp"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:textColor="#ffffff"
-        android:textColorHint="#F6F6F6"></EditText>
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="20dp"
+            android:inputType="textEmailAddress"
+            android:background="@drawable/fieldbg"
+            android:drawableLeft="@drawable/usericon"
+            android:fontFamily="@font/stawixsoinsansneuemedium"
+            android:hint="Username"
+            android:textAlignment="center"
+            android:textColor="#ffffff"
+            android:textColorHint="@color/transparent"></EditText>
 
-    <Button
-        android:id="@+id/login"
-        android:layout_width="110dp"
-        android:layout_height="40dp"
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/fieldbg"
+            android:drawableLeft="@drawable/passwordicon"
+            android:fontFamily="@font/stawixsoinsansneuemedium"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:textAlignment="center"
+            android:textColor="#ffffff"
+            android:textColorHint="@color/transparent"></EditText>
+    </LinearLayout>
+
+
+
+        <Button
+            android:id="@+id/login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="65dp"
+            android:alpha="0"></Button>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="-35dp"
+            android:layout_marginRight="85dp"
+            android:fontFamily="@font/stawixsoinsansneuemedium"
+            android:text="Sign In"
+            android:textColor="#FFFFFF"
+            android:textSize="17dp">
+
+        </TextView>
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="30dp"
+        android:alpha="0.2"
         android:layout_gravity="right"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="40dp"
-        android:background="@drawable/fieldbg"
-        android:backgroundTint="#51A8EB"
-        android:text="Sign In"
-        android:textColor="#ffffff"></Button>
-    <TextView
-        android:layout_width="wrap_content"
+        android:layout_marginTop="-35dp"
+        android:layout_marginRight="120dp"
+        android:background="@drawable/image_background"
+        android:backgroundTint="#92C1FF"></ImageView>
+
+    <ImageView
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:text="@string/forgot_password"
-        android:textColor="#ffffff"
-        android:layout_gravity="center"
-        android:layout_marginTop="150dp"></TextView>
+        android:src="@drawable/line"
+        android:layout_gravity="right"
+        android:layout_marginTop="-41dp"
+        android:layout_marginRight="30dp"></ImageView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dip"
+        android:layout_gravity="center|bottom"
+        android:layout_weight="1"
+        android:gravity="center|bottom"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:fontFamily="@font/stawixsoinsansneuemedium"
+            android:text="@string/forgot_password"
+            android:textColor="#ffffff"></TextView>
+    </LinearLayout>
 
 
 </LinearLayout>
