@@ -1,22 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/detail_design"
+    android:paddingBottom="50dp"
     tools:context=".DetailUpdateFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <ImageView
-        android:id="@+id/cross"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/cross"
-        android:layout_gravity="right"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    </ImageView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/cross"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="right"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/cross" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/docimage"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_gravity="center"
+                android:src="@drawable/sample_image" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="Edit"
+                android:textColor="@color/transparent" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:fontFamily="@font/stawixsoinsansseueroman"
+                android:text="Name"
+                android:textColor="#ffffff"></TextView>
+
+            <EditText
+                android:id="@+id/user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/fieldbg"
+                android:fontFamily="@font/stawixsoinsansseueroman"
+                android:hint="Username"
+                android:paddingLeft="20dp"
+                android:textColor="#ffffff"
+                android:textColorHint="@color/transparent"
+                android:textSize="22dp"></EditText>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/stawixsoinsansseueroman"
+                android:text="Email"
+                android:textColor="#ffffff"></TextView>
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/fieldbg"
+                android:fontFamily="@font/stawixsoinsansseueroman"
+                android:hint="Email"
+                android:paddingLeft="20dp"
+                android:textColor="#ffffff"
+                android:textColorHint="@color/transparent"
+                android:textSize="22dp"></EditText>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/stawixsoinsansseueroman"
+                android:text="Password"
+                android:textColor="#ffffff"></TextView>
+
+            <EditText
+                android:id="@+id/pass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/fieldbg"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:fontFamily="@font/stawixsoinsansseueroman"
+                android:paddingLeft="20dp"
+                android:textColor="#ffffff"
+                android:textColorHint="@color/transparent"
+                android:textSize="22dp"></EditText>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/stawixsoinsansseueroman"
+                android:text="Confirm Password"
+                android:textColor="#ffffff"></TextView>
+
+            <EditText
+                android:id="@+id/c_pass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/fieldbg"
+                android:fontFamily="@font/stawixsoinsansseueroman"
+                android:hint="Confirm Password"
+                android:inputType="textPassword"
+                android:paddingLeft="20dp"
+                android:textColor="#ffffff"
+                android:textColorHint="@color/transparent"
+                android:textSize="22dp"></EditText>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/stawixsoinsansseueroman"
+                android:text="Phone"
+                android:textColor="#ffffff"></TextView>
+
+            <EditText
+                android:id="@+id/phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/fieldbg"
+                android:fontFamily="@font/stawixsoinsansseueroman"
+                android:hint="03xxxxxxxxx"
+                android:paddingLeft="20dp"
+                android:textColor="#ffffff"
+                android:textColorHint="@color/transparent"
+                android:textSize="22dp"></EditText>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dip"
+                android:layout_gravity="bottom|right"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/update"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="40dp"
+                    android:background="@drawable/button_bg"
+                    android:fontFamily="@font/stawixsoinsansneuemedium"
+                    android:paddingHorizontal="20dp"
+                    android:text="Update!"
+                    android:textColor="#ffffff"
+                    android:textSize="17dp"></Button>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 
 </FrameLayout>

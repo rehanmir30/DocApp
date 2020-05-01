@@ -1,32 +1,30 @@
 package com.example.docapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresPermission;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
     Button login;
     EditText username, password;
+    TextView forget;
+
 
     RequestQueue mQueue;
 
@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         login = findViewById(R.id.login);
+        forget = findViewById(R.id.forget);
+
 
         mQueue = Volley.newRequestQueue(this);
 
@@ -67,50 +69,80 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+        forget.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, ResetActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
     }
 
-    public void signin(String email, String password) {
+    public void signin(final String email, final String password) {
 
         final ProgressDialog dialog = ProgressDialog.show(MainActivity.this, "Loading", "Please wait...", true);
         String url = "http://medico.yac-tech.com/api/api-get-endpoints.php?data=doctors";
+        String Url = "http://medico.yac-tech.com/api/api-doc-signin.php";
 
-
-        final JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        StringRequest request = new StringRequest(Request.Method.POST, Url, new Response.Listener<String>() {
             @Override
-            public void onResponse(final JSONObject response) {
+            public void onResponse(String response) {
+
+
                 try {
-                    JSONArray jsonArray = response.getJSONArray("0");
-                    JSONObject doctor = jsonArray.getJSONObject(0);
-
-                    String email = doctor.getString("email");
-                    String name = doctor.getString("doctorName");
-                    String contact=doctor.getString("contactNo");
+                    JSONObject j = new JSONObject(response);
+                    String status = j.getString("status");
+                    String message = j.getString("message");
+                    String docId = j.getString("doctor_id");
 
 
-                    Intent i = new Intent(MainActivity.this, HomeActivity.class);
+                    if (status.equals("200")) {
 
-                    i.putExtra("name",name);
-                    i.putExtra("email",email);
-                    i.putExtra("contact",contact);
+                        SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+                        SharedPreferences.Editor myEdit = sharedPreferences.edit();
+                        myEdit.putString("id", docId);
+                        myEdit.commit();
 
-                    dialog.dismiss();
-                    startActivity(i);
-                    finish();
+                        Intent i = new Intent(MainActivity.this, HomeActivity.class);
+                        i.putExtra("d_id", docId);
+                        dialog.dismiss();
+                        startActivity(i);
+                        finish();
+                    } else if (status.equals("404")) {
+
+                        dialog.dismiss();
+                        Toast.makeText(getApplicationContext(), "Wrong email or passsword entered", Toast.LENGTH_LONG).show();
+                        return;
+                    }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
-            }
 
+            }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                dialog.dismiss();
+                Toast.makeText(getApplicationContext(), "Network Problem. Try Again later", Toast.LENGTH_LONG).show();
             }
-        });
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
 
+                Map<String, String> params = new HashMap<String, String>();
+
+                params.put("docEmail", email);
+                params.put("docPassword", password);
+                return params;
+            }
+        };
         mQueue.add(request);
+
+
     }
+
 
 }
